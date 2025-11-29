@@ -2,6 +2,9 @@
 
 A smart task management application that helps you prioritize your tasks based on importance, urgency, and effort required.
 
+![Task Analyzer Screenshot](https://raw.githubusercontent.com/boyaladinnemanu/Task-Analyzer/main/Task-Analyzer11.png)
+![Task Analyzer Screenshot](https://raw.githubusercontent.com/boyaladinnemanu/Task-Analyzer/main/Task-Analyzer12.png)
+
 
 ## Features
 
