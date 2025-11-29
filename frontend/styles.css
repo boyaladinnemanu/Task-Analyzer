@@ -1,0 +1,400 @@
+/* Global Styles */
+:root {
+    --primary-color: #4a6fa5;
+    --primary-light: #6b8cbd;
+    --primary-dark: #3a5a80;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --light-gray: #f8f9fa;
+    --dark-gray: #343a40;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Main Layout */
+.main-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.input-section{
+    flex: 1;
+    min-width: 0; /* Allows flex items to shrink below their content size */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.task-list,
+.json-input {
+    flex: 1;
+    min-width: 0; /* Allows flex items to shrink below their content size */
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Make form elements take full width */
+.task-input .form-group,
+.task-input .form-row {
+    width: 100%;
+}
+
+/* Make sure textarea takes up available space */
+#jsonInput {
+    width: 100%;
+    min-height: 300px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: monospace;
+    resize: vertical;
+}
+
+/* Task list container */
+#tasks {
+    flex: 1;
+    overflow-y: scroll;
+    margin: 10px 0;
+    max-height: 285px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .main-content {
+        flex-wrap: wrap;
+    }
+    
+    .input-section,
+    .task-list,
+    .json-input {
+        flex: 1 1 45%;
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .input-section,
+    .task-list,
+    .json-input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--dark-gray);
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn.secondary {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    border: 1px solid var(--border-color);
+}
+
+.btn.secondary:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Task List Styles */
+.task-list {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: var(--shadow);
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background: var(--light-gray);
+    border-radius: 4px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s;
+}
+
+.task-item.overdue {
+    border-left-color: var(--danger-color);
+}
+
+.task-item.completed {
+    opacity: 0.7;
+    text-decoration: line-through;
+}
+
+.task-info {
+    flex: 1;
+}
+
+.task-title {
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.task-meta {
+    font-size: 0.85em;
+    color: var(--secondary-color);
+    display: flex;
+    gap: 15px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Results Section */
+.results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.priority-summary, .suggested-tasks {
+    margin-bottom: 25px;
+}
+
+.priority-summary h3, .suggested-tasks h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.priority-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background: var(--light-gray);
+    border-radius: 4px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.priority-item.high {
+    border-left-color: var(--danger-color);
+}
+
+.priority-item.medium {
+    border-left-color: var(--warning-color);
+}
+
+.priority-score {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.priority-item.high .priority-score {
+    color: var(--danger-color);
+}
+
+.priority-item.medium .priority-score {
+    color: var(--warning-color);
+}
+
+.suggested-tasks .task-item {
+    background: #e8f4ff;
+    border-left: 4px solid var(--primary-color);
+}
+
+.placeholder {
+    color: var(--secondary-color);
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+    background: var(--light-gray);
+    border-radius: 4px;
+}
+
+.form-actions, .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.form-actions {
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+/* Add some spacing between form sections */
+.form-group, .form-row {
+    margin-bottom: 15px;
+}
+
+/* Style required field indicators */
+label[required]::after {
+    content: ' *';
+    color: #dc3545;
+}
+
+/* Add focus styles for better accessibility */
+input:focus, button:focus, textarea:focus {
+    outline: 2px solid #4a6fa5;
+    outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.task-item, .priority-item {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* JSON Input */
+.json-input {
+    margin-top: 20px;
+}
+
+.json-input textarea {
+    width: 100%;
+    min-height: 150px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    resize: vertical;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 0;
+    color: var(--secondary-color);
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+}

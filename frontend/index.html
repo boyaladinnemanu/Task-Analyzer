@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Task Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Smart Task Analyzer</h1>
+            <p>Get intelligent task prioritization based on due dates, importance, and effort</p>
+        </header>
+
+        <div class="main-content">
+            <div class="input-section">
+                <h2>Your Tasks</h2>
+                <form id="taskForm" class="task-input">
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title *</label>
+                        <input type="text" id="taskTitle" placeholder="Enter task title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dueDate">Due Date *</label>
+                        <input type="date" id="dueDate" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="importance">Importance (1-10)</label>
+                            <input type="number" id="importance" min="1" max="10" value="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="effort">Effort (hours)</label>
+                            <input type="number" id="effort" min="1" value="1" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="addTask" class="btn primary">Add Task</button>
+                        <button type="button" id="clearForm" class="btn secondary">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="task-list">
+                <h3>Task List</h3>
+                <div id="tasks">
+                    <!-- Tasks will be added here -->
+                </div>
+                <div class="actions">
+                    <button id="analyzeBtn" class="btn primary">Analyze Tasks</button>
+                    <button id="clearBtn" class="btn secondary">Clear All</button>
+                </div>
+            </div>
+            
+            <div class="json-input">
+                <h3>Or paste your tasks as JSON</h3>
+                <textarea id="jsonInput" rows="10" placeholder='[
+  {
+    "title": "Complete project report",
+    "due_date": "2023-12-15",
+    "importance": 8,
+    "estimated_hours": 4,
+    "dependencies": []
+  },
+  {
+    "title": "Review code changes",
+    "due_date": "2023-12-10",
+    "importance": 6,
+    "estimated_hours": 2,
+    "dependencies": [1]
+  }
+]'></textarea>
+                <button id="loadJsonBtn" class="btn secondary">Load from JSON</button>
+            </div>
+            </div>
+
+            <div class="results-section">
+                <div class="priority-summary">
+                    <h2>Priority Analysis</h2>
+                    <div id="priorityResults">
+                        <p class="placeholder">Your prioritized tasks will appear here after analysis.</p>
+                    </div>
+                </div>
+                
+                <div class="suggested-tasks">
+                    <h2>Suggested Tasks for Today</h2>
+                    <div id="suggestedTasks">
+                        <p class="placeholder">Your suggested tasks will appear here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Smart Task Analyzer &copy; 2023 | Built with Django & Vanilla JS</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
